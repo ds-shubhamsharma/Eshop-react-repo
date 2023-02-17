@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 function ProductListTopBar() {
   return (
@@ -43,7 +43,7 @@ function ProductListTopBar() {
                 Watches
               </button>
             </div>
-            <div className="flex-w flex-c-m m-tb-10">
+            {/* <div className="flex-w flex-c-m m-tb-10">
               <div className="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
                 <i className="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list" />
                 <i className="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" />
@@ -54,9 +54,9 @@ function ProductListTopBar() {
                 <i className="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" />
                 Search
               </div>
-            </div>
+            </div> */}
             {/* Search product */}
-            <div className="dis-none panel-search w-full p-t-10 p-b-15">
+            {/* <div className="dis-none panel-search w-full p-t-10 p-b-15">
               <div className="bor8 dis-flex p-l-15">
                 <button className="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
                   <i className="zmdi zmdi-search" />
@@ -68,9 +68,9 @@ function ProductListTopBar() {
                   placeholder="Search"
                 />
               </div>
-            </div>
+            </div> */}
             {/* Filter */}
-            <div className="dis-none panel-filter w-full p-t-10">
+            {/* <div className="dis-none panel-filter w-full p-t-10">
               <div className="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
                 <div className="filter-col1 p-r-15 p-b-27">
                   <div className="mtext-102 cl2 p-b-15">Sort By</div>
@@ -258,7 +258,7 @@ function ProductListTopBar() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
     
     

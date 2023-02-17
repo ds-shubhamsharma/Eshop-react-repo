@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import CartPopup from "../components/CartPopup";
 import BlogDetail from "../components/Category/BlogDetail";
 import CategoryOption from "../components/Category/CategoryOption";
 import Footer from "../components/layouts/Footer";
@@ -34,6 +35,9 @@ function Navigation() {
         <Route path="/sign-in" element={<Login />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/about-us" element={<CategoryOption />} />
+        <Route path="/cart-popup" element={<CartPopup />} />
+
+        CartPopup
       </Routes>
       <Footer />
     </>

@@ -1,9 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { clear, decrement, increament } from "../redux/slice/cartSlice";
+// import { RiDeleteBinFill } from "react-icons/fa";
+import {
+  clear,
+  decrement,
+  increament,
+  removeItem,
+} from "../redux/slice/cartSlice";
 import { cartTotalPriceSelector } from "../redux/slice/selectors";
 import { toggle } from "../redux/slice/uiSlice";
+
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
@@ -24,7 +31,7 @@ const Cart = () => {
                       <tr className="table_head">
                         <th className="column-1">Product</th>
                         <th className="column-2" />
-                        
+
                         <th className="column-3">Price</th>
                         <th className="column-4">Quantity</th>
                         <th className="column-5">Total</th>
@@ -73,7 +80,15 @@ const Cart = () => {
                               <td className="column-5">
                                 ${cartItem.quantity * cartItem.price}
                               </td>
-                              <td className="column-5">remove</td>
+                              {/* <td className="column-5">remove</td> */}
+                              <button
+                                className="column-99"
+                                onClick={() => {
+                                  dispatch(removeItem(cartItem.id));
+                                }}
+                              >
+                               <i className="fa fa-remove"></i>
+                              </button>
                             </tr>
                           </>
                         );
@@ -102,17 +117,19 @@ const Cart = () => {
             <div className="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
               <div className="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
                 <h4 className="mtext-109 cl2 p-b-30">Cart Totals</h4>
-                
+
                 {cart.map((item) => {
                   return (
                     <>
-                  
                       <div className="flex-w flex-t bor12 p-b-13">
                         <div className="size-208">
-                          <span className="stext-110 cl80">Subtotal of : ${item.quantity * item.price}</span>
+                          <span className="stext-110 cl80">
+                          
+                            {item.title}
+                          </span>
                         </div>
                         <div className="size-209">
-                          <span className="mtext-110 cl2"> {item.title}</span>
+                          <span className="mtext-110 cl2">  ${item.quantity * item.price} </span>
                         </div>
                       </div>
                     </>
@@ -174,7 +191,7 @@ const Cart = () => {
                 </div>
                 <Link to="/check-out">
                   {" "}
-                  <button  className="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                  <button className="flex-c-m stext-101 cl0 size-116 bg3 bor14  p-lr-15 trans-04 pointer">
                     Proceed to Checkout
                   </button>
                 </Link>

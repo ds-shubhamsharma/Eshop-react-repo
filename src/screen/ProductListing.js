@@ -62,12 +62,12 @@ const ProductListing = () => {
                           <Link
                             to="/product-detail"
                             state={{ product: products }}
-                            className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
+                            className="stext-104 r991 hov-cl1 trans-04 js-name-b2 p-b-6"
                           >
                             {products.title}
                           </Link>
 
-                          <span className="stext-105 cl3">${products.price}</span>
+                          <span className="stext-105 r991">${products.price}</span>
                         </div>
                         {/* <Link to="#" className="">
                           Cart
