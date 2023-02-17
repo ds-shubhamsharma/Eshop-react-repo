@@ -643,16 +643,16 @@ function MenuBar() {
                   </a>
                   <ul className="custom-menu">
                     <li>
-                      <a href="index.html">Home</a>
+                      <a href="#">Home</a>
                     </li>
                     <li>
-                      <a href="products.html">Products</a>
+                      <a href="#">Products</a>
                     </li>
                     <li>
-                      <a href="product-page.html">Product Details</a>
+                      <a href="#">Product Details</a>
                     </li>
                     <li>
-                      <a href="checkout.html">Checkout</a>
+                      <a href="#">Checkout</a>
                     </li>
                   </ul>
                 </li>

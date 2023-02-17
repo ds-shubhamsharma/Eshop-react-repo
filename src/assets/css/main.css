@@ -276,12 +276,12 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 [ Menu ]*/
 
 .wrap-menu-desktop {
-  position: relative;
+  position: sticky;
   z-index: 1100;
   background-color: white;
   width: 100%;
   height: 84px;
-  /* top: 40px; */
+  top: 0px;
   left: 0px; 
 
   -webkit-transition: height 0.3s, background-color 0.3s;
@@ -387,6 +387,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   color: #fff;
 }
 
+
+/*------------subtotal---------------*/
+.subtotaldata{
+  height: auto;
+}
 /*---------------------------------------------*/
 .sub-menu {
   list-style-type: none;
@@ -2134,8 +2139,12 @@ input.num-product::-webkit-inner-spin-button {
     TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 ==================================================================*/
 .cl0 {color: #fff;}
+.c99 {color: #0e0d0d;}
+
 .cl1 {color: #717fe0;}
 .cl2 {color: #333;}
+.cl80 {color: #080808;}
+
 .cl3 {color: #666;}
 .cl4 {color: #999;}
 .cl5 {color: #222;}
@@ -2157,38 +2166,38 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .stext-102 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 14px;
   line-height: 1.7;
 }
 
 .stext-103 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 15px;
   line-height: 1.466667;
 }
 
 .stext-104 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 14px;
   line-height: 1.466667;
 }
 
 .stext-105 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 14px;
   line-height: 1.466667;
   letter-spacing: 1px;
 }
 
 .stext-106 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 15px;
   line-height: 1.2;
 }
 
 .stext-107 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 13px;
   line-height: 1.923;
 }
@@ -2200,7 +2209,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .stext-109 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 12px;
   line-height: 1.833333;
 }
@@ -2212,13 +2221,13 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .stext-111 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 13px;
   line-height: 1.6923;
 }
 
 .stext-112 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 13px;
   line-height: 1.6923;
   text-transform: uppercase;
@@ -2237,13 +2246,13 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .stext-115 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 15px;
   line-height: 1.666667;
 }
 
 .stext-116 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat-Bold;
   font-size: 15px;
   line-height: 1.266667;
 }
@@ -2381,6 +2390,11 @@ input.num-product::-webkit-inner-spin-button {
   font-size: 50px;
   line-height: 1.1;
 }
+.ltext-99 {
+  font-family: Poppins-Bold;
+  font-size: 40px;
+  line-height: 1.1;
+}
 
 .ltext-106 {
   font-family: Poppins-Bold;
@@ -2444,6 +2458,11 @@ input.num-product::-webkit-inner-spin-button {
 .size-103 {
   min-width: 179px;
   height: 46px;
+}
+.size-99 {
+  margin-top: 17px;
+  min-width: 153px;
+  height: 44px;
 }
 
 .size-104 {
@@ -2653,6 +2672,7 @@ input.num-product::-webkit-inner-spin-button {
 .bg-none {background-color: transparent;}
 .bg0 {background-color: #fff;}
 .bg1 {background-color: #717fe0;}
+.bg99 {background-color: #151516;}
 .bg2 {background-color: #e6e6e6;}
 .bg3 {background-color: #222;}
 .bg5 {background-color: rgba(0,0,0,0.5);}
@@ -2682,7 +2702,12 @@ input.num-product::-webkit-inner-spin-button {
   background-repeat: no-repeat;
   background-image: url('../images/bg-01.jpg');
 }
-
+.bg-img99 {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url('../images/chu.png');
+}
 
 
 

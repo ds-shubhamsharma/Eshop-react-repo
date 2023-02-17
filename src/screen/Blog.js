@@ -18,7 +18,7 @@ function Blog() {
                 {/* item blog */}
                 <div className="p-b-63">
                   <Link
-                    to="blog-detail.html"
+                    to="#"
                     className="hov-img0 how-pos5-parent"
                   >
                     <img src={blog4} alt="IMG-BLOG" />
@@ -30,7 +30,7 @@ function Blog() {
                   <div className="p-t-32">
                     <h4 className="p-b-15">
                       <Link
-                        to="blog-detail.html"
+                        to="#"
                         className="ltext-108 cl2 hov-cl1 trans-04"
                       >
                         8 Inspiring Ways to Wear Dresses in the Winter
@@ -66,7 +66,7 @@ function Blog() {
                 {/* item blog */}
                 <div className="p-b-63">
                   <Link
-                    to="blog-detail.html"
+                    to="#"
                     className="hov-img0 how-pos5-parent"
                   >
                     <img src={blog5} alt="IMG-BLOG" />
@@ -78,7 +78,7 @@ function Blog() {
                   <div className="p-t-32">
                     <h4 className="p-b-15">
                       <Link
-                        to="blog-detail.html"
+                        to="#"
                         className="ltext-108 cl2 hov-cl1 trans-04"
                       >
                         The Great Big List of Men’s Gifts for the Holidays
@@ -114,7 +114,7 @@ function Blog() {
                 {/* item blog */}
                 <div className="p-b-63">
                   <Link
-                    to="blog-detail.html"
+                    to="#"
                     className="hov-img0 how-pos5-parent"
                   >
                     <img src={blog6} alt="IMG-BLOG" />
@@ -126,7 +126,7 @@ function Blog() {
                   <div className="p-t-32">
                     <h4 className="p-b-15">
                       <Link
-                        to="blog-detail.html"
+                        to="#"
                         className="ltext-108 cl2 hov-cl1 trans-04"
                       >
                         5 Winter-to-Spring Fashion Trends to Try Now

@@ -4,7 +4,6 @@ import BlogDetail from "../components/Category/BlogDetail";
 import CategoryOption from "../components/Category/CategoryOption";
 import Footer from "../components/layouts/Footer";
 import TopBar from "../components/layouts/TopBar";
-import Nav from "../components/Nav";
 import RelatedProduct from "../components/RelatedProduct";
 import AboutUs from "../screen/AboutUs";
 import Blog from "../screen/Blog";

@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import RelatedProduct from "../components/RelatedProduct";
-import detail1 from "../assets/images/product-detail-01.jpg";
-import detail2 from "../assets/images/product-detail-02.jpg";
-import detail3 from "../assets/images/product-detail-03.jpg";
 import avtar from "../assets/images/avatar-01.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/slice/productsSlice";
+import { addToCart, decrement, increament } from "../redux/slice/cartSlice";
+
 const ProductDetail = () => {
   let location = useLocation();
   const detail = location.state.product;
-  console.log('detail', detail)
+  // console.log('detail', detail)
+  const cart = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
     <>
       <section className="sec-product-detail bg0 p-t-65 p-b-60">
@@ -32,14 +41,11 @@ const ProductDetail = () => {
             <div className="col-md-6 col-lg-5 p-b-30">
               <div className="p-r-50 p-t-5 p-lr-0-lg">
                 <h4 className="mtext-105 cl2 js-name-detail p-b-14">
-                 {detail.title}
+                  {detail.title}
                 </h4>
-                <span className="mtext-106 cl2">Price  ${detail.price}</span>
-                
-                <p className="stext-102 cl3 p-t-23">
-                  
-               {detail.description}
-                </p>
+                <span className="mtext-106 cl2">Price ${detail.price}</span>
+
+                <p className="stext-102 cl3 p-t-23">{detail.description}</p>
 
                 <div className="p-t-33">
                   <div className="flex-w flex-r-m p-b-10">
@@ -74,21 +80,43 @@ const ProductDetail = () => {
                   </div>
                   <div className="flex-w flex-r-m p-b-10">
                     <div className="size-204 flex-w flex-m respon6-next">
-                      <div className="wrap-num-product flex-w m-r-20 m-tb-10">
-                        <div className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                          <i className="fs-16 zmdi zmdi-minus" />
-                        </div>
-                        <input
-                          className="mtext-104 cl3 txt-center num-product"
-                          type="number"
-                          name="num-product"
-                          defaultValue={1}
-                        />
-                        <div className="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                          <i className="fs-16 zmdi zmdi-plus" />
-                        </div>
-                      </div>
-                      <Link to="/add-to-cart">
+                      {/* {cart.map((cartItem) => {
+                        return (
+                          <>
+                            <div className="wrap-num-product flex-w m-r-20 m-tb-10">
+                              <div
+                                className="btn-num-product-down cl8 trans-04 flex-c-m"
+                                disabled={cartItem.quantity === 1}
+                                onClick={() => {
+                                  dispatch(decrement(cartItem.id));
+                                }}
+                              >
+                                {"-"}
+                              </div>
+                              <p className="mtext-104 cl3 txt-center num-product">
+                                {" "}
+                                {cartItem.quantity}
+                              </p>
+
+                              <div
+                                className="btn-num-product-up cl8  trans-04 flex-c-m"
+                                onClick={() => {
+                                  dispatch(increament(cartItem.id));
+                                }}
+                              >
+                                {"+"}
+                              </div>
+                            </div>
+                          </>
+                        );
+                      })} */}
+
+                      <Link
+                        to="/add-to-cart"
+                        onClick={() => {
+                          dispatch(addToCart(detail));
+                        }}
+                      >
                         <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                           Add to cart
                         </button>
@@ -106,7 +134,7 @@ const ProductDetail = () => {
                   <a
                     className="nav-link active"
                     data-toggle="tab"
-                    href="#description"
+                    href="#"
                     role="tab"
                   >
                     Description
@@ -121,9 +149,7 @@ const ProductDetail = () => {
                   role="tabpanel"
                 >
                   <div className="how-pos2 p-lr-15-md">
-                    <p className="stext-102 cl6">
-                      {detail.description}
-                    </p>
+                    <p className="stext-102 cl6">{detail.description}</p>
                   </div>
                 </div>
               </div>

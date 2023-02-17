@@ -22,6 +22,7 @@ const ProductListing = () => {
 
 
   const [productData, setProductData] = useState([]);
+
   useEffect(() => {
     productListData()
       .then((res) => {
@@ -60,7 +61,7 @@ const ProductListing = () => {
                         <div className="block2-txt-child1 flex-col-l ">
                           <Link
                             to="/product-detail"
-                            state={{ products: products }}
+                            state={{ product: products }}
                             className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
                           >
                             {products.title}
