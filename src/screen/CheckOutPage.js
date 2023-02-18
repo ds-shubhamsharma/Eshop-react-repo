@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { cartTotalPriceSelector, cartTotalSelector } from "../redux/slice/selectors";
+import {
+  cartTotalPriceSelector,
+  cartTotalSelector,
+} from "../redux/slice/selectors";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Bubble } from "../components/CartreduxCss";
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const YupValidation = Yup.object({
   firstName: Yup.string().min(3).max(15).required("firstName can't be empty"),
@@ -18,10 +22,10 @@ const YupValidation = Yup.object({
   pinCode: Yup.string().min(5).required("pinCode can't be empty"),
   // phone: Yup.number().min(10).max(12).required("phone can't be empty"),
   phone: Yup.string()
-  .required("phone can't be empty")
-  .matches(phoneRegExp, 'Phone number is not valid')
-  .min(10, "too short")
-  .max(10, "too long"),
+    .required("phone can't be empty")
+    .matches(phoneRegExp, "Phone number is not valid")
+    .min(10, "too short")
+    .max(10, "too long"),
   password: Yup.string().min(3).max(15).required("password can't be empty"),
   confirmPassword: Yup.string()
     .min(3)
@@ -48,14 +52,13 @@ const CheckOutPage = () => {
       validationSchema: YupValidation,
       onClick: (value, action) => {
         action.resetForm();
-console.log('value', value)
+        console.log("value", value);
         if (value) {
           navigate("/");
         }
-        
       },
     });
-    console.log('initialValues', initialValues)
+  console.log("initialValues", initialValues);
 
   const cart = useSelector((state) => state.cart);
   const ui = useSelector((state) => state.ui);
@@ -87,8 +90,7 @@ console.log('value', value)
           >
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-muted">Your cart</span>
-                     <Bubble change={change}>{total}</Bubble>
-
+              <Bubble change={change}>{total}</Bubble>
             </h4>
             <ul className="list-group mb-3">
               {cart.map((cartItem) => {
@@ -98,6 +100,9 @@ console.log('value', value)
                       className="list-group-item d-flex justify-content-between lh-condensed"
                       key={cartItem.id}
                     >
+                      <div className="how-itemcart1">
+                        <img src={cartItem.thumbnail} alt={cartItem.title} />
+                      </div>
                       <div>
                         {/* <h6 className="my-0">Product name</h6> */}
                         <p className="text-muted">{cartItem.title}</p>
@@ -129,7 +134,9 @@ console.log('value', value)
                   placeholder="Promo code"
                 />
                 <div className="input-group-append">
-                  <button type="#" className="btn btn-secondary">Redeem</button>
+                  <button type="#" className="btn btn-secondary">
+                    Redeem
+                  </button>
                 </div>
               </div>
             </form>
@@ -143,11 +150,7 @@ console.log('value', value)
           </div>
           <div className="col-md-8 order-md-1" style={{ marginTop: "80px" }}>
             <h4 className="mb-3">Billing address</h4>
-            <form
-              className="needs-validation"
-              noValidate
-              
-             >
+            <form className="needs-validation" noValidate>
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="firstName">
@@ -312,7 +315,6 @@ console.log('value', value)
                     ) : (
                       ""
                     )} */}
-                   
                     <option>Rajasthan</option>
                     <option>UtterPradesh</option>
                     <option>MadhyaPradesh</option>
@@ -376,7 +378,6 @@ console.log('value', value)
                     name="paymentMethod"
                     type="radio"
                     className="custom-control-input"
-                    
                   />
                   <label className="custom-control-label" htmlFor="credit">
                     Credit card
@@ -388,7 +389,6 @@ console.log('value', value)
                     name="paymentMethod"
                     type="radio"
                     className="custom-control-input"
-                    
                   />
                   <label className="custom-control-label" htmlFor="debit">
                     Debit card
@@ -400,7 +400,6 @@ console.log('value', value)
                     name="paymentMethod"
                     type="radio"
                     className="custom-control-input"
-                    
                   />
                   <label className="custom-control-label" htmlFor="paypal">
                     PayPal
@@ -410,11 +409,7 @@ console.log('value', value)
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="cc-name">Name on card</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="cc-name"
-                  />
+                  <input type="text" className="form-control" id="cc-name" />
                   <small className="text-muted">
                     Full name as displayed on card
                   </small>
@@ -424,11 +419,7 @@ console.log('value', value)
                 </div>
                 <div className="col-md-6 mb-3">
                   <label htmlFor="cc-number">Credit card number</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="cc-number"
-                    />
+                  <input type="text" className="form-control" id="cc-number" />
                 </div>
               </div>
               <div className="row">
@@ -438,7 +429,6 @@ console.log('value', value)
                     type="text"
                     className="form-control"
                     id="cc-expiration"
-                 
                   />
                   <div className="invalid-feedback">
                     Expiration date required
@@ -446,11 +436,7 @@ console.log('value', value)
                 </div>
                 <div className="col-md-3 mb-3">
                   <label htmlFor="cc-cvv">CVV</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="cc-cvv"
-                      />
+                  <input type="text" className="form-control" id="cc-cvv" />
                 </div>
               </div>
             </form>

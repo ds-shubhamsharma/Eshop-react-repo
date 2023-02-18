@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import animation from "react-animations/lib/swing";
+import { Button } from "react-bootstrap";
 
 export const primaryColor = "#ffc221";
 
@@ -56,20 +57,11 @@ export const CartProductSubtotal = styled.div`
   margin-top: 4px;
   color: #666;
 `;
-// export const ActionButton = styled(Button)`
-//   padding: 0;
-//   width: 30px;
-//   height: 30px;
-//   color: #222;
-//   background: #fff;
-//   border: 1px solid #efefef;
-//   opacity: ${(p) => (p.disabled ? 0.4 : 1)};
-//   pointer-events: ${(p) => (p.disabled ? "none" : "unset")};
-
-//   &:hover {
-//     background: #efefef;
-//   }
-// `;
+export const ActionButton = styled(Button)`
+  padding: 0;
+   ${(p) => (p.disabled ? 0.4 : 1)};
+   ${(p) => (p.disabled ? "none" : "unset")};
+`;
 export const CartProductQuantity = styled.div`
   height: 30px;
   line-height: 30px;

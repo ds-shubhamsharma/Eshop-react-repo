@@ -1,19 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// import { RiDeleteBinFill } from "react-icons/fa";
+import { cartTotalPriceSelector } from "../redux/slice/selectors";
+import { toggle } from "../redux/slice/uiSlice";
 import {
   clear,
   decrement,
   increament,
   removeItem,
 } from "../redux/slice/cartSlice";
-import { cartTotalPriceSelector } from "../redux/slice/selectors";
-import { toggle } from "../redux/slice/uiSlice";
+
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-
   const ui = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   const totalPrice = useSelector(cartTotalPriceSelector);
@@ -55,7 +54,6 @@ const Cart = () => {
                                 <div className="wrap-num-product flex-w m-l-auto m-r-0">
                                   <div
                                     className="btn-num-product-down cl8 trans-04 flex-c-m"
-                                    disabled={cartItem.quantity === 1}
                                     onClick={() => {
                                       dispatch(decrement(cartItem.id));
                                     }}
@@ -63,7 +61,6 @@ const Cart = () => {
                                     {"-"}
                                   </div>
                                   <p className="mtext-104 cl3 txt-center num-product">
-                                    {" "}
                                     {cartItem.quantity}
                                   </p>
 
@@ -87,7 +84,7 @@ const Cart = () => {
                                   dispatch(removeItem(cartItem.id));
                                 }}
                               >
-                               <i className="fa fa-remove"></i>
+                                <i className="fa fa-remove"></i>
                               </button>
                             </tr>
                           </>
@@ -123,19 +120,20 @@ const Cart = () => {
                     <>
                       <div className="flex-w flex-t bor12 p-b-13">
                         <div className="size-208">
+                          <div className="how-itemcart1">
+                            <img src={item.thumbnail} alt={item.title} />
+                          </div>
                           <span className="stext-110 cl80">
-                          
-                            {item.title}
+                            ${item.quantity * item.price}
                           </span>
                         </div>
                         <div className="size-209">
-                          <span className="mtext-110 cl2">  ${item.quantity * item.price} </span>
+                          <span className="mtext-110 cl2">{item.title} </span>
                         </div>
                       </div>
                     </>
                   );
                 })}
-
                 {/*  <div className="flex-w flex-t bor12 p-t-15 p-b-30">
                   <div className="size-208 w-full-ssm">
                     <span className="stext-110 cl2">Shipping:</span>

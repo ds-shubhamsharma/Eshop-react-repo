@@ -86,7 +86,6 @@ const ProductDetail = () => {
                             <div className="wrap-num-product flex-w m-r-20 m-tb-10">
                               <div
                                 className="btn-num-product-down cl8 trans-04 flex-c-m"
-                                disabled={cartItem.quantity === 1}
                                 onClick={() => {
                                   dispatch(decrement(cartItem.id));
                                 }}
