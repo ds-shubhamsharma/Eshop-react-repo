@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
 import animation from "react-animations/lib/swing";
-import { Button } from "react-bootstrap";
 
 export const primaryColor = "#ffc221";
 
@@ -13,9 +12,23 @@ export const fade = keyframes`
     opacity:1
   }
 `;
+export const Button = styled.button`
+  padding: 8px 12px;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background: #ffc221;
+  }
+`;
 export const CartContainer = styled.div`
   position: fixed;
-  top: 0;
+  top: 85px;
   right: 0;
   z-index: 2;
   width: 300px;
@@ -26,10 +39,10 @@ export const CartContainer = styled.div`
   transition: transform 0.2s ease-in-out;
   transform: translateX(${(p) => (p.visible ? 0 : "300px")});
 `;
-// export const CartClearButton = styled(Button)`
-//   width: 100%;
-//   margin: 16px 0;
-// `;
+export const CartClearButton = styled(Button)`
+  width: 67%;
+  margin: 38px 50px;
+`;
 export const CartItem = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
@@ -38,7 +51,7 @@ export const CartItem = styled.div`
 `;
 export const CartProductImage = styled.img`
   width: 100px;
-  height: 100px;
+  height: 90px;
   margin-right: 8px;
   border: 1px solid #f6f6f6;
 `;
@@ -67,11 +80,13 @@ export const CartProductQuantity = styled.div`
   line-height: 30px;
 `;
 export const CartTotal = styled.div`
-  padding: 16px 0;
-  font-size: 20px;
+  padding: 5px 0;
+  font-size: 16px;
+  font-wight:bold;
   text-align: right;
-  color: red;
+  color: #000;
 `;
+
 export const Mask = styled.div`
   position: fixed;
   top: 0;
@@ -85,8 +100,11 @@ export const Mask = styled.div`
 `;
 export const EmptyCart = styled.div`
   padding: 16px;
-  color: #888;
+  color: #000;
+  font-weight: 900;
   text-align: center;
+    background-image: url("../assets/images/holo.png");
+
 `;
 
 export const styledAnimation = keyframes`${animation}`;

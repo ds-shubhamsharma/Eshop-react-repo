@@ -61,13 +61,12 @@ const CheckOutPage = () => {
   console.log("initialValues", initialValues);
 
   const cart = useSelector((state) => state.cart);
-  const ui = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   const totalPrice = useSelector(cartTotalPriceSelector);
-
   const total = useSelector(cartTotalSelector);
   const [change, setChange] = useState(false);
-
+console.log('change', change)
+console.log('total', total)
   useEffect(() => {
     if (total !== 0) {
       setChange(true);
@@ -90,7 +89,9 @@ const CheckOutPage = () => {
           >
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-muted">Your cart</span>
-              <Bubble change={change}>{total}</Bubble>
+              {total}
+              
+              {/* 4 */}
             </h4>
             <ul className="list-group mb-3">
               {cart.map((cartItem) => {

@@ -7,13 +7,14 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo/logo.png";
 import { cartTotalSelector } from "../../redux/slice/selectors";
 import { toggle } from "../../redux/slice/uiSlice";
+import CartPopup from "../CartPopup";
 import { Bubble } from "../CartreduxCss";
-
 
 function Header() {
   const total = useSelector(cartTotalSelector);
   const dispatch = useDispatch();
   const [change, setChange] = useState(false);
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     if (total !== 0) {
@@ -27,6 +28,7 @@ function Header() {
 
   return (
     <>
+    <CartPopup/>
       <div className="wrap-menu-desktop">
         <nav className="limiter-menu-desktop container">
           {/* Logo desktop */}
@@ -50,7 +52,7 @@ function Header() {
 
                 <ul className="sub-menu">
                   <li>
-                    <Link to="/check-out">checkout</Link>
+                    {cart.length>0?<Link to="/check-out">checkout</Link>:""}
                   </li>
                   {/* <li>
                     <Link to="/product-detail">product details</Link>
@@ -81,7 +83,12 @@ function Header() {
                 <i className="zmdi zmdi-search" />
               </button>
             </div>
-            <Link to="/add-to-cart">
+            <Link
+              to="#"
+              onClick={() => {
+                dispatch(toggle());
+              }}
+            >
               <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
                 {/* {total} */}
                 <Bubble change={change}>{total}</Bubble>

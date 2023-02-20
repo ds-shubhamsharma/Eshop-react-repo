@@ -1228,6 +1228,21 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   /* background-image: url("../images/slide-02.jpg"); */
 
 }
+.item-slick99 {
+  height: calc(50vh - 5px);
+  width: 50%;
+  margin: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-image: url("https://img.freepik.com/free-photo/shopping-cart-3d-render-icon_460848-6902.jpg?w=740&t=st=1676882455~exp=1676883055~hmac=18c59a9343895c181109f50d3426e89e59a906f042fbceacccb0e71aa6e6e48a"); */
+  background-image: url("../images/holo.png");
+
+}
+.empty-cart{
+  margin: auto;
+}
+
 
 .rs1-slick1 .item-slick1 {
   height: calc(100vh - 84px);
