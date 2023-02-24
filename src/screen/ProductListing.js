@@ -14,10 +14,10 @@ import { addToCart } from "../redux/slice/cartSlice";
 
 const ProductListing = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+  // const products = useSelector((state) => state.products);
+  // useEffect(() => {
+  //   dispatch(fetchProducts());
+  // }, [dispatch]);
 
 
 

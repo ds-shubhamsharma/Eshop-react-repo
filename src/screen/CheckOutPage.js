@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  cartTotalPriceSelector,
-  cartTotalSelector,
-} from "../redux/slice/selectors";
+import {useNavigate } from "react-router-dom";
+// import {cartTotalPriceSelector} from "../redux/slice/selectors";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Bubble } from "../components/CartreduxCss";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -62,20 +57,10 @@ const CheckOutPage = () => {
 
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const totalPrice = useSelector(cartTotalPriceSelector);
-  const total = useSelector(cartTotalSelector);
-  const [change, setChange] = useState(false);
-console.log('change', change)
-console.log('total', total)
-  useEffect(() => {
-    if (total !== 0) {
-      setChange(true);
-
-      setTimeout(() => {
-        setChange(false);
-      }, 1000);
-    }
-  }, [total]);
+  // const totalPrice = useSelector(cartTotalPriceSelector);
+  const totalPrice = cart
+  .map((item) => item.price * item.quantity)
+  .reduce((prevValue, currValue) => prevValue + currValue, 0);
   return (
     <>
       <div className="container">
@@ -89,7 +74,7 @@ console.log('total', total)
           >
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-muted">Your cart</span>
-              {total}
+              {/* {total} */}
               
               {/* 4 */}
             </h4>
@@ -108,7 +93,7 @@ console.log('total', total)
                         {/* <h6 className="my-0">Product name</h6> */}
                         <p className="text-muted">{cartItem.title}</p>
                       </div>
-                      <span className="text-muted">${cartItem.price}</span>
+                      <span className="text-muted">${cartItem.price}x {cartItem.quantity}</span>
                     </li>
                   </>
                 );

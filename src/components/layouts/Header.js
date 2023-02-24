@@ -1,34 +1,23 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import styled, { keyframes } from "styled-components";
-// import animation from "react-animations/lib/swing";
-// import { primaryColor } from "../../containers/Products";
+import {  useState } from "react";
+import {  useSelector } from "react-redux";
+import { Bubble } from "../CartreduxCss";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo/logo.png";
-import { cartTotalSelector } from "../../redux/slice/selectors";
-import { toggle } from "../../redux/slice/uiSlice";
-import CartPopup from "../CartPopup";
-import { Bubble } from "../CartreduxCss";
 
-function Header() {
-  const total = useSelector(cartTotalSelector);
-  const dispatch = useDispatch();
+// import { cartTotalSelector } from "../../redux/slice/selectors";
+// import { toggle } from "../../redux/slice/uiSlice";
+// import CartPopup from "../CartPopup";
+
+const Header=()=>{
+
   const [change, setChange] = useState(false);
   const cart = useSelector((state) => state.cart);
 
-  useEffect(() => {
-    if (total !== 0) {
-      setChange(true);
-
-      setTimeout(() => {
-        setChange(false);
-      }, 1000);
-    }
-  }, [total]);
-
+  const totalItem =cart.length
+ 
   return (
     <>
-    <CartPopup/>
+      {/* <CartPopup /> */}
       <div className="wrap-menu-desktop">
         <nav className="limiter-menu-desktop container">
           {/* Logo desktop */}
@@ -52,7 +41,11 @@ function Header() {
 
                 <ul className="sub-menu">
                   <li>
-                    {cart.length>0?<Link to="/check-out">checkout</Link>:""}
+                    {cart.length > 0 ? (
+                      <Link to="/check-out">checkout</Link>
+                    ) : (
+                      ""
+                    )}
                   </li>
                   {/* <li>
                     <Link to="/product-detail">product details</Link>
@@ -83,15 +76,10 @@ function Header() {
                 <i className="zmdi zmdi-search" />
               </button>
             </div>
-            <Link
-              to="#"
-              onClick={() => {
-                dispatch(toggle());
-              }}
-            >
+            <Link to="/add-to-cart">
               <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
                 {/* {total} */}
-                <Bubble change={change}>{total}</Bubble>
+                <Bubble change={change}>{totalItem}</Bubble>
                 <i className="zmdi zmdi-shopping-cart" />
               </div>
             </Link>

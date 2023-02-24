@@ -1,22 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { cartTotalPriceSelector } from "../redux/slice/selectors";
-import { toggle } from "../redux/slice/uiSlice";
-import {
-  clear,
-  decrement,
-  increament,
-  removeItem,
-} from "../redux/slice/cartSlice";
-import { EmptyCart } from "../components/CartreduxCss";
+import { decrement, increament, removeItem } from "../redux/slice/cartSlice";
 
 const Cart = () => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
-  const ui = useSelector((state) => state.ui);
   const dispatch = useDispatch();
-  const totalPrice = useSelector(cartTotalPriceSelector);
+  const totalPrice = cart
+    .map((item) => item.price * item.quantity)
+    .reduce((prevValue, currValue) => prevValue + currValue, 0);
 
   return (
     <>
@@ -36,7 +29,7 @@ const Cart = () => {
                           <th className="column-3">Price</th>
                           <th className="column-4">Quantity</th>
                           <th className="column-5">Total</th>
-                          <th className="column-5">Remove</th>
+                          {/* <th className="column-5">Remove</th> */}
                         </tr>
                         {cart.map((cartItem) => {
                           return (
@@ -115,8 +108,7 @@ const Cart = () => {
               </div>
               <div className="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
                 <div className="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-                  <h4 className="mtext-109 cl2 p-b-30">Cart Totals</h4>
-
+                  <h4 className="mtext-109 cl98 p-b-30">Cart Totals</h4>
                   {cart.map((item) => {
                     return (
                       <>
@@ -126,7 +118,7 @@ const Cart = () => {
                               <img src={item.thumbnail} alt={item.title} />
                             </div>
                             <span className="stext-110 cl80">
-                              ${item.quantity * item.price}
+                              ${item.price} x {item.quantity}
                             </span>
                           </div>
                           <div className="size-209">
