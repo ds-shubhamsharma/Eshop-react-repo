@@ -4,43 +4,44 @@ import { Link } from "react-router-dom";
 import ProductListTopBar from "../components/ProductListTopBar";
 import icon1 from "../assets/images/icons/icon-heart-01.png";
 import icon2 from "../assets/images/icons/icon-heart-02.png";
-// import Products from "../containers/Products";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../redux/slice/productsSlice";
 import { addToCart } from "../redux/slice/cartSlice";
-
-// import styled from "styled-components";
-
+import SkeletonLoading from "../utils/skeleton/SkeletonLoading";
+import { STATUS } from "../context/Status";
+import { fetchProducts } from "../redux/slice/ProductSlice";
 
 const ProductListing = () => {
-  const dispatch = useDispatch();
-  // const products = useSelector((state) => state.products);
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // }, [dispatch]);
-
-
-
   const [productData, setProductData] = useState([]);
 
+  const dispatch = useDispatch();
+
+  const { products, status } = useSelector((state) => state.products);
   useEffect(() => {
-    productListData()
-      .then((res) => {
-        setProductData(res);
-      })
-      .catch((err) => {});
-    return () => {};
+    dispatch(fetchProducts());
   }, []);
- 
+  if (status === STATUS.LOADING) {
+    return <SkeletonLoading />;
+  }
+  if (status !== STATUS.LOADING && status === STATUS.ERROR) {
+    return <h2>{status}</h2>;
+  }
+
+  // useEffect(() => {
+  //   productListData()
+  //     .then((res) => {
+  //       setProductData(res);
+  //     })
+  //     .catch((err) => {});
+  //   return () => {};
+  // }, []);
 
   return (
     <>
       <div className="bg0 m-t-23 p-b-140">
         <div className="container">
-          <ProductListTopBar />{" "}
-          {/* <Products/> */}
+          <ProductListTopBar /> {/* <Products/> */}
           <div className="row isotope-grid">
-            {productData?.products?.map((products) => {
+            {products?.products?.map((products) => {
               return (
                 <>
                   <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -49,10 +50,10 @@ const ProductListing = () => {
                         <img src={products.thumbnail} alt="IMG-products" />
                         <Link
                           to="#"
-                        className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                        onClick={() => {
-                          dispatch(addToCart(products));
-                        }}
+                          className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
+                          onClick={() => {
+                            dispatch(addToCart(products));
+                          }}
                         >
                           Add to Cart
                         </Link>
@@ -67,7 +68,9 @@ const ProductListing = () => {
                             {products.title}
                           </Link>
 
-                          <span className="stext-105 r991">${products.price}</span>
+                          <span className="stext-105 r991">
+                            ${products.price}
+                          </span>
                         </div>
                         {/* <Link to="#" className="">
                           Cart
@@ -108,7 +111,6 @@ const ProductListing = () => {
         </div>
       </div>
     </>
-
   );
 };
 

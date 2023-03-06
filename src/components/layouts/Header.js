@@ -1,30 +1,23 @@
-import {  useState } from "react";
-import {  useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Bubble } from "../CartreduxCss";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo/logo.png";
 
-// import { cartTotalSelector } from "../../redux/slice/selectors";
-// import { toggle } from "../../redux/slice/uiSlice";
-// import CartPopup from "../CartPopup";
-
-const Header=()=>{
-
+const Header = () => {
   const [change, setChange] = useState(false);
   const cart = useSelector((state) => state.cart);
 
-  const totalItem =cart.length
- 
+  const totalItem = cart.length;
+
   return (
     <>
       {/* <CartPopup /> */}
       <div className="wrap-menu-desktop">
         <nav className="limiter-menu-desktop container">
-          {/* Logo desktop */}
           <Link to="/" className="logo">
             <img src={logo} alt="IMG-LOGO" />
           </Link>
-          {/* Menu desktop */}
           <div className="menu-desktop">
             <ul className="main-menu">
               <li className="active-menu">
@@ -95,6 +88,6 @@ const Header=()=>{
       </div>
     </>
   );
-}
+};
 
 export default Header;

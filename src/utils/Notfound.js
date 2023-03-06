@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Layout from "../components/layout/Layout";
+// import Layout from "../components/layout/Layout";
 
 function Notfound() {
   return (
-    <Layout>
+    // <Layout>
     <div>
       <div className="page-wrap d-flex flex-row align-items-center my-5">
         <div className="container">
@@ -27,7 +27,7 @@ function Notfound() {
         </div>
       </div>
     </div>
-    </Layout>
+    // </Layout>
   );
 }
 

@@ -6,6 +6,7 @@ import { decrement, increament, removeItem } from "../redux/slice/cartSlice";
 const Cart = () => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
+  console.log('cart', cart)
   const dispatch = useDispatch();
   const totalPrice = cart
     .map((item) => item.price * item.quantity)
@@ -25,7 +26,6 @@ const Cart = () => {
                         <tr className="table_head">
                           <th className="column-1">Product</th>
                           <th className="column-2" />
-
                           <th className="column-3">Price</th>
                           <th className="column-4">Quantity</th>
                           <th className="column-5">Total</th>

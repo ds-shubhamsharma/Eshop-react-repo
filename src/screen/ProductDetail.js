@@ -1,22 +1,13 @@
-import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import RelatedProduct from "../components/RelatedProduct";
-import avtar from "../assets/images/avatar-01.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../redux/slice/productsSlice";
-import { addToCart, decrement, increament } from "../redux/slice/cartSlice";
+import { addToCart } from "../redux/slice/cartSlice";
 
 const ProductDetail = () => {
   let location = useLocation();
   const detail = location.state.product;
-  // console.log('detail', detail)
   const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
 
   return (
     <>

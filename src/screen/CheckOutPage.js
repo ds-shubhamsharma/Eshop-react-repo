@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import {cartTotalPriceSelector} from "../redux/slice/selectors";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -57,10 +57,9 @@ const CheckOutPage = () => {
 
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // const totalPrice = useSelector(cartTotalPriceSelector);
   const totalPrice = cart
-  .map((item) => item.price * item.quantity)
-  .reduce((prevValue, currValue) => prevValue + currValue, 0);
+    .map((item) => item.price * item.quantity)
+    .reduce((prevValue, currValue) => prevValue + currValue, 0);
   return (
     <>
       <div className="container">
@@ -75,7 +74,7 @@ const CheckOutPage = () => {
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-muted">Your cart</span>
               {/* {total} */}
-              
+
               {/* 4 */}
             </h4>
             <ul className="list-group mb-3">
@@ -93,7 +92,9 @@ const CheckOutPage = () => {
                         {/* <h6 className="my-0">Product name</h6> */}
                         <p className="text-muted">{cartItem.title}</p>
                       </div>
-                      <span className="text-muted">${cartItem.price}x {cartItem.quantity}</span>
+                      <span className="text-muted">
+                        ${cartItem.price}x {cartItem.quantity}
+                      </span>
                     </li>
                   </>
                 );
